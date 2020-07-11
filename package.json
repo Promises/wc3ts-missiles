@@ -26,5 +26,8 @@
     "war3-types": "^1.0.2",
     "war3tstlhelper": "^1.0.1",
     "winston": "^3.2.1"
+  },
+  "dependencies": {
+    "wc3ts-eventqueue": "^1.0.0"
   }
 }
