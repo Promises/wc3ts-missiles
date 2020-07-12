@@ -1,6 +1,6 @@
 {
   "name": "wc3ts-missile",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Missile library rewritten for TypeScript",
   "author": "Dracaratos & HenningB",
   "license": "MIT",

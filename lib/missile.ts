@@ -69,12 +69,14 @@ export class Missile {
         this.missileY = ownerUnit.y
         this.missileZ = 0.0
         this.traveled = 0.0
-
-        for (const key in options) {
-            if (options.hasOwnProperty(key) && this.hasOwnProperty(key)) {
-                this[key] = options[key];
+        if(options) {
+            for (const key in options) {
+                if (options.hasOwnProperty(key) && this.hasOwnProperty(key)) {
+                    this[key] = options[key];
+                }
             }
         }
+
 
         if (this.allies) {
             this.filter = (u: Unit) => this.filterAllies(u);
@@ -88,6 +90,9 @@ export class Missile {
         if (!this.effect) {
             this.effect = new Effect(this.effectModel, this.missileX, this.missileY);
         }
+
+        this.effect.scale = this.scale;
+        this.addToStack();
     }
 
     private addToStack(): void {
@@ -97,7 +102,7 @@ export class Missile {
 
     private startTimer(): void {
         if (Missile.MissileStack.length === 1 && Missile.MissileTimer.remaining === 0.0) {
-            Missile.MissileTimer.start(Missile.MissileCadence, true, Missile.updateStack);
+            Missile.MissileTimer.start(Missile.MissileCadence, true, () => Missile.updateStack());
         }
     }
 
